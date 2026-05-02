@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Notification System",
-  description: "Campus evaluation notification app",
+  description: "Send and manage notifications",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
