@@ -1,0 +1,195 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f4f6f8;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+/* layout */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.container h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: #111;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* cards */
+.form-card,
+.list-card {
+  background: #fff;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.form-card h2,
+.list-card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #333;
+}
+
+/* form */
+.form-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.form-card input,
+.form-card textarea {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+  color: #1a1a1a;
+  background: #fafafa;
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  border-color: #4f6ef7;
+  background: #fff;
+}
+
+/* fetch row */
+.fetch-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.fetch-row input {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+  background: #fafafa;
+  color: #1a1a1a;
+}
+
+.fetch-row input:focus {
+  border-color: #4f6ef7;
+  background: #fff;
+}
+
+/* buttons */
+button {
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  background: #4f6ef7;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+button:hover:not(:disabled) {
+  background: #3a57e0;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.form-card button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+}
+
+/* status messages */
+.msg-success {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #16a34a;
+}
+
+.msg-error {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #dc2626;
+}
+
+.empty {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 8px;
+}
+
+/* notification list */
+.notification-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.notification-item {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #fafafa;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.notification-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.notification-time {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.notification-message {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.45;
+}
