@@ -15,6 +15,16 @@ const USER_CONFIG = {
   accessCode: "QkbpxH",
 };
 
+function writeEnvValues(updates: Record<string, string>): void {
+  const current = readEnv();
+  const merged = { ...current, ...updates };
+  const lines = Object.entries(merged).map(([k, v]) => `${k}=${v}`);
+  fs.writeFileSync(ENV_PATH, lines.join("\n") + "\n", "utf-8");
+  for (const [k, v] of Object.entries(updates)) {
+    process.env[k] = v;
+  }
+}
+
 function readEnv(): Record<string, string> {
   const raw = fs.readFileSync(ENV_PATH, "utf-8");
   const result: Record<string, string> = {};
@@ -72,10 +82,16 @@ export async function authenticate(): Promise<{ token: string; expiresAt: number
     throw new Error("Auth response missing access_token");
   }
 
-  const expiresAt = Date.now() + expires_in * 1000;
+  // expires_in is an absolute unix timestamp in seconds, not a duration
+  const expiresAt = expires_in * 1000;
 
   runtimeToken = access_token;
   runtimeTokenExpiry = expiresAt;
+
+  writeEnvValues({
+    ACCESS_TOKEN: access_token,
+    TOKEN_EXPIRY: expiresAt.toString(),
+  });
 
   return { token: access_token, expiresAt };
 }
